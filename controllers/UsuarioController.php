@@ -58,7 +58,7 @@ class UsuarioController{
         $usuario->nombre = DB::escape($_POST['nombre']);
         $usuario->apellido1 = DB::escape($_POST['apellido1']);
         $usuario->apellido2 = DB::escape($_POST['apellido2']);
-        $usuario->privilegio = intval($_POST['privilegio']);
+        $usuario->privilegio = empty($_POST['privilegio'])? 0: intval($_POST['privilegio']);
         $usuario->administrador = empty($_POST['administrador'])? 0 : 1;
         $usuario->email = DB::escape($_POST['email']);
           
