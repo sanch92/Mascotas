@@ -13,7 +13,7 @@ class Mascotas{
     }
     
     //recuperar un mascota concreto por id
-    public static function getMAscota(int $id):?Mascota{
+    public static function getMAscota(int $id):?Mascotas{
         $consulta="SELECT * FROM mascotas WHERE id=$id"; //prepara la consulata
         return DB::select($consulta, self::class); // ejectuar y retorna el resultado
         
