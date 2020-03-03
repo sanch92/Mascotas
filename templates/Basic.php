@@ -15,10 +15,16 @@
                 <ul>
         			<li><a href="/">Inicio</a></li>
         			<li><a href="/contacto">Contactar</a></li>
+        			<li><a href="/mascotas/list">Lista de Mascotas</a>
+        			<li><a href="/mascotas/detalles">detalles de Mascotas</a>
+        			<li><a href="/fotos">fotos de Mascotas</a>
+        			
         		</ul>
         		<?php if(Login::isAdmin()){?>
               		<ul>
             			<li><a href="/usuario/list">Lista de usuarios</a></li>
+            			<li><a href="/mascotas/list">Lista de usuarios</a></li>
+            			i><a href="/fotos/list">Lista de usuarios</a></li>
             		</ul>
         		<?php }?>
             </nav>

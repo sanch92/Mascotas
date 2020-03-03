@@ -10,8 +10,8 @@
     
     // PARAMETROS DE CONFIGURACION BDD 
     define('DB_HOST','localhost');    // host
-    define('DB_USER','alumne');       // usuario
-    define('DB_PASS','');             // password
+    define('DB_USER','sanchez');       // usuario
+    define('DB_PASS','sanchez');             // password
     define('DB_NAME','EJERCICIO02_mascotas');   // base de datos
     define('DB_CHARSET','utf8');      // codificación
     
