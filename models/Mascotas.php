@@ -24,10 +24,10 @@ class Mascotas{
         $consulta="INSERT INTO mascotas(nombre, sexo, biografia, fechanacimiento, fechafallecimiento,
                         idusuario, idraza)
                 VALUES('$this->nombre','$this->sexo', '$this->biografia', $this->fechanacimiento,
-                   $this->fechafallecimiento, $this->idusuario, $this->idraza)";               
-                 
-                 return DB::insert($consulta);
-                 
+                   $this->fechafallecimiento, $this->idusuario, $this->idraza)";
+                   
+                   return DB::insert($consulta);
+                   
     }
     
     public static function borrar(int $id) {
@@ -43,7 +43,7 @@ class Mascotas{
                                 sexo='$this->sexo',
                                 biografia='$this->biografia',
                                 fechanacimiento=$this->fechanacimiento,
-                                fechafallecimiento=$this->fechafallecimiento,                              
+                                fechafallecimiento=$this->fechafallecimiento,
                             WHERE id=$this->id";
         
         return DB::update($consulta);
