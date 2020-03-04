@@ -1,21 +1,21 @@
 <?php
 
-// CONTROLADOR UsuarioController
+// CONTROLADOR Foto
 class FotoController{
     
     // operación por defecto
     public function index(){
-        $this->list(); // listado de mascotas
+        $this->list(); // listado de fotos
     }
     
-    // lista los usuarios
+    // lista d ¡e las fotos
     public function list(){
         
         // solamente el administrador
         if(!Login::isAdmin())
             throw new Exception('No tienes permiso para hacer esto');
             
-            $fotos = Foto::get();
+            $fotos = Fotos::getFoto($id);
             include 'views/foto/lista.php';
     }
     
@@ -33,7 +33,7 @@ class FotoController{
         if(empty($_POST['guardar']))
             throw new Exception('No se recibieron datos');
             
-            $mascota = new Foto(); //crear el nuevo usuario
+            $mascota = new Fotos(); //crear el nuevo usuario
             
             $mascota->fichero = DB::escape($_POST['fichero']);
             $mascota->ubicacion = DB::escape($_POST['ubicacion']);
