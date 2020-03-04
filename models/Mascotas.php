@@ -13,7 +13,7 @@ class Mascotas{
     }
     
     //recuperar un mascota concreto por id
-    public static function getMascota(int $id):?Mascota{
+    public static function getMAscota(int $id):?Mascotas{
         $consulta="SELECT * FROM mascotas WHERE id=$id"; //prepara la consulata
         return DB::select($consulta, self::class); // ejectuar y retorna el resultado
         
@@ -23,11 +23,11 @@ class Mascotas{
     public function guardar(){
         $consulta="INSERT INTO mascotas(nombre, sexo, biografia, fechanacimiento, fechafallecimiento,
                         idusuario, idraza)
-                VALUES('$this->nombre','$this->sexo', '$this->biografia', '$this->fechanacimiento',
-                   '$this->fechafallecimiento', $this->idusuario, $this->idraza)";               
-                 
-                 return DB::insert($consulta);
-                 
+                VALUES('$this->nombre','$this->sexo', '$this->biografia', $this->fechanacimiento,
+                   $this->fechafallecimiento, $this->idusuario, $this->idraza)";
+                   
+                   return DB::insert($consulta);
+                   
     }
     
     public static function borrar(int $id) {
@@ -42,8 +42,8 @@ class Mascotas{
                                 nombre='$this->nombre',
                                 sexo='$this->sexo',
                                 biografia='$this->biografia',
-                                fechanacimiento='$this->fechanacimiento',
-                                fechafallecimiento='$this->fechafallecimiento',                              
+                                fechanacimiento=$this->fechanacimiento,
+                                fechafallecimiento=$this->fechafallecimiento,
                             WHERE id=$this->id";
         
         return DB::update($consulta);
