@@ -11,11 +11,8 @@ class MascotaController{
     // lista los usuarios
     public function list(){
         
-        // solamente el administrador
-        if(!Login::isAdmin())
-            throw new Exception('No tienes permiso para hacer esto');
-            
-            $mascotas = Mascota::get();
+           
+            $mascotas = Mascotas::get();
             include 'views/mascota/lista.php';
     }
     
@@ -30,7 +27,7 @@ class MascotaController{
             throw new Exception('No tienes los permisos necesarios');
             
             // recuperar el usuario
-            if(!$mascota = Mascota::getById($id))
+            if(!$mascota = Mascotas::getById($id))
                 throw new Exception("No se pudo recuperar la mascota.");
                 
                 include 'views/mascota/detalles.php';
@@ -51,7 +48,7 @@ class MascotaController{
         if(empty($_POST['guardar']))
             throw new Exception('No se recibieron datos');
             
-            $mascota = new Mascota(); //crear el nuevo usuario
+            $mascota = new Mascotas(); //crear el nuevo usuario
             
             $mascota->nombre = DB::escape($_POST['nombre']);
             $mascota->sexo = DB::escape($_POST['sexo']);
@@ -63,7 +60,7 @@ class MascotaController{
             if(!$mascota->guardar())
                 throw new Exception("No se pudo guardar $mascota->mascota");
                 
-                $mensaje="Guardado la mascota $usuario->mascota correcta.";
+                $mensaje="Guardado la mascota $mascota->mascota correcta.";
                 include 'views/exito.php'; //mostrar éxito
     }
     
@@ -79,7 +76,7 @@ class MascotaController{
             throw new Exception('No tienes los permisos necesarios');
             
             // recuperar el usuario
-            if(!$mascota = Mascota::getById($id))
+            if(!$mascota = Mascotas::getById($id))
                 throw new Exception("No se indicó la mascota.");
                 
                 // mostrar el formulario de edición
@@ -102,7 +99,7 @@ class MascotaController{
                 $id = intval($_POST['id']); // recuperar el id vía POST
                 
                 // recuperar el usuario
-                if(!$mascota = Mascota::getById($id))
+                if(!$mascota = Mascotas::getById($id))
                     throw new Exception("No existe la mascota $id.");
                     
                     $mascota->nombre = DB::escape($_POST['nombre']);
@@ -138,7 +135,7 @@ class MascotaController{
             throw new Exception('No tienes los permisos necesarios');
             
             // recupera el usuario para mostrar sus datos en la vista
-            if(!$mascota = Mascota::getById($id))
+            if(!$mascota = Mascotas::getById($id))
                 throw new Exception("No existe la mascota $id.");
                 
                 // carga la vista de confirmación de borrado
@@ -157,7 +154,7 @@ class MascotaController{
             $id = empty($_POST['id'])? 0 : intval($_POST['id']);
             
             // borra el usuario de la BDD
-            if(!Mascota::borrar($id))
+            if(!Mascotas::borrar($id))
                 throw new Exception("No se pudo dar de baja la mascota $id");
                 
                 $mensaje = "La mascota ha sido dado de baja correctamente.";

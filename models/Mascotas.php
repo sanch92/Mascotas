@@ -1,5 +1,5 @@
 <?php
-class Mascota{
+class Mascotas{
     //Propiedades
     public $id=0, $nombre='', $sexo=0, $biografia=0, $fechanacimiento='', $fechafallecimiento='',
     $idusuario='', $idraza='';
