@@ -16,7 +16,7 @@
         			<li><a href="/">Inicio</a></li>
         			<li><a href="/contacto">Contactar</a></li>
         			<li><a href="/mascota/list">Lista de Mascotas</a>
-        			<li><a href="/mascota/store/">Crear mascota</a>
+        			<li><a href="/mascota/create/">Crear mascota</a>
         			
         			
         		</ul>
