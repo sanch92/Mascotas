@@ -18,13 +18,14 @@
 				<th>Sexo</th>
 				<th>Biografia</th>
 				<th>Fecha Nacimiento</th>
-				<th>Fecha Fallecimiento</th>
+				<th>Operaciones</th>
 				
 			</tr>
     		<?php foreach($mascotas as $mascota){
-    			   echo "<tr>";
+    			   echo "<tr>";   
     			   echo "<td>$mascota->nombre</td>";
     			   echo "<td>$mascota->sexo</td>";
+    			   echo "<td>$mascota->biografia</td>";
     			   echo "<td>$mascota->fechanacimiento</td>";
     			   echo "<td>$mascota->fechafallecimiento</td>";
     			   echo "<td>";

@@ -55,12 +55,14 @@ class MascotaController{
             $mascota->biografia = DB::escape($_POST['biografia']);
             $mascota->fechanacimiento = DB::escape($_POST['fechanacimiento']);
             $mascota->fechafallecimiento = DB::escape($_POST['fechafallecimiento']);
+            $mascota->idusuario = Login::get()->id;
+            $mascota->idraza;
                              
             
             if(!$mascota->guardar())
-                throw new Exception("No se pudo guardar $mascota->mascota");
+                throw new Exception("No se pudo guardar $mascota->nombre");
                 
-                $mensaje="Guardado la mascota $mascota->mascota correcta.";
+                $mensaje="Guardado la mascota $mascota->nombre";
                 include 'views/exito.php'; //mostrar éxito
     }
     

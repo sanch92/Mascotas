@@ -23,9 +23,10 @@ class Mascotas{
     public function guardar(){
         $consulta="INSERT INTO mascotas(nombre, sexo, biografia, fechanacimiento, fechafallecimiento,
                         idusuario, idraza)
-                VALUES('$this->nombre','$this->sexo', '$this->biografia', $this->fechanacimiento,
-                   $this->fechafallecimiento, $this->idusuario, $this->idraza)";
+                VALUES('$this->nombre','$this->sexo','$this->biografia','$this->fechanacimiento',
+                   '$this->fechafallecimiento',$this->idusuario, $this->idraza)";
                    
+
                    return DB::insert($consulta);
                    
     }
@@ -42,8 +43,10 @@ class Mascotas{
                                 nombre='$this->nombre',
                                 sexo='$this->sexo',
                                 biografia='$this->biografia',
-                                fechanacimiento=$this->fechanacimiento,
-                                fechafallecimiento=$this->fechafallecimiento,
+                                fechanacimiento='$this->fechanacimiento',
+                                fechafallecimiento='$this->fechafallecimiento'
+                                idusuario=$this->idusuario',
+                                idraza=$this->idraza'
                             WHERE id=$this->id";
         
         return DB::update($consulta);

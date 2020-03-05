@@ -17,6 +17,7 @@
 		
 		<p><b>Nombre:</b> <?=$mascota->nombre?></p>
 		<p><b>Sexo:</b> <?=$mascota->sexo?></p>
+		<p><b>biografia</b> <?=$mascota->biografia?></p>
 		<p><b>Fecha Nacimiento</b> <?=$mascota->fechanacimiento?></p> 
        	<p><b>Fecha Fallecimiento</b> <?=$mascota->fechafallecimiento?></p>
 		

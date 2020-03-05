@@ -30,19 +30,19 @@
 			
 			<!-- resto del formulario... -->
 			<label>Nombre</label>
-			<input type="text" name="nombre" value="<?=$mascota->nombre?>">
+			<input type="text" name="nombre">
 			<br>
 			<label>Sexo</label>
 			<input type="text" name="sexo">
 			<br>
 			<label>biografia</label>
-			<input type="text" name="biografia" value="<?=$mascota->biografia?>">
+			<input type="text" name="biografia">
 			<br>
 			<label>nacimiento</label>
-			<input type="text" name="fechanacimiento" value="<?=$mascota->fechanacimiento?>">
+			<input type="text" name="fechanacimiento">
 			<br>
 			<label>fallecimiento</label>
-			<input type="text" name="fechafallecimiento" value="<?=$mascota->fechafallecimiento?>">
+			<input type="text" name="fechafallecimiento">
 						
 			<h4>Operaciones solo para el admin</h4>
 			<label>Privilegio</label>

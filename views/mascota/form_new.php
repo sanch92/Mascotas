@@ -37,15 +37,19 @@
 			<label>Biografia</label>
 			<input type="text" name="biografia" required><br>
 			<label>Nacimiento</label>
-			<input type="text" name="fechaNacimiento"><br>
-			<label>Fallecimiento</label>
 			<input type="text" name="fechanacimiento"><br>
+			<label>Fallecimiento</label>
+			<input type="text" name="fechafallecimiento"><br>
 			<input type="file" name="imagen"><br><br>
-			<input type="submit" name="guardar">
 			<br><br>
-			<input type="submit" name="enviar" value="Enviar">
+			<input type="submit" name="guardar" value="Enviar">
 		</form>
-		<br>		
+		<br>	
+			<select name="Tipos">						
+ 		 	<option value="idtipo">Gato</option>
+  			<option value="idtipo">Perro</option>
+  			<option value="idtipo">Araña</option>
+		</select>	
 	
 		<?php 
 		  (TEMPLATE)::footer();
