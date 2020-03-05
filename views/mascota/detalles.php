@@ -13,7 +13,7 @@
 		?>  
 		
 		<h2>Detalles del mascota</h2>
-		<h3><?="$mascota->mascota ($mascota->fechafallecimiento)"?></h3>
+		<h3><?="$mascota->nombre $mascota->fechafallecimiento"?></h3>
 		
 		<p><b>Nombre:</b> <?=$mascota->nombre?></p>
 		<p><b>Sexo:</b> <?=$mascota->sexo?></p>

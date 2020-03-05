@@ -19,7 +19,7 @@
 		?>  
 				
 		<h2>Formulario de edición</h2>
-		<p><?="$mascota->mascota ($mascota->email)"?></p>
+		<p><?="$mascota->nombre ($mascota->fechanacimiento)"?></p>
 		
 		<?=empty( $GLOBALS['mensaje'])? "" : "<p>". $GLOBALS['mensaje']."</p>"?>
 
@@ -30,20 +30,18 @@
 			
 			<!-- resto del formulario... -->
 			<label>Nombre</label>
-			<input type="text" name="name" value="<?=$mascota->nombre?>">
+			<input type="text" name="nombre" value="<?=$mascota->nombre?>">
 			<br>
 			<label>Sexo</label>
-			<input type="password" name="clave">
-			<label>En blanco para no cambiar la clave actual</label>
+			<input type="text" name="sexo">
 			<br>
-			
 			<label>biografia</label>
 			<input type="text" name="biografia" value="<?=$mascota->biografia?>">
 			<br>
-			<label>fechanacimiento</label>
+			<label>nacimiento</label>
 			<input type="text" name="fechanacimiento" value="<?=$mascota->fechanacimiento?>">
 			<br>
-			<label>fechafallecimiento</label>
+			<label>fallecimiento</label>
 			<input type="text" name="fechafallecimiento" value="<?=$mascota->fechafallecimiento?>">
 						
 			<h4>Operaciones solo para el admin</h4>

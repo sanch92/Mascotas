@@ -40,11 +40,27 @@ class FotoController{
             
             
             
-            if(!$mascota->guardar())
+            if(!$mascota->guardar()){
                 throw new Exception("No se pudo guardar la $foto->foto");
                 
                 $mensaje="Guardado la $foto->foto correcta.";
                 include 'views/exito.php'; //mostrar éxito
     }
+    
+        //TRATAMIENTO DEL FICHERO DE IMAGEN
+        if(Upload::llegaFichero('fichero'))
+            $foto->fichero = Upload::procesar(
+                $_FILES['fichero'], 'fichero/fotos', true, 0, 'fichero/*');
+            if(!$foto->guardar()){ //guarda las fotos en la bdd
+                //SI NO SE PUDO GUARDAR
+                @unlink($foto->fichero); //borra la imagen recien subida
+                throw new Exception("No se pudo guardar $foto->fichero");
+                
+            }
+            
+            $mensaje="Guardado la foto $foto->fichero correcto.;";
+                include 'view/exito.php'; //muestra la vista con exito.
+
+}
 
 }

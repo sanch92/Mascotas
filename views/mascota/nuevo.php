@@ -21,7 +21,7 @@
 		
 		<h2>Nueva Mascota</h2>
 		
-		<form method="post" action="/mascota/store">
+		<form method="post" action="/mascota/store" enctype="multipart/form-data">
 			<label>Nombre</label>
 			<input type="text" name="nombre">
 			<br>

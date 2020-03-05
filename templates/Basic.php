@@ -16,8 +16,8 @@
         			<li><a href="/">Inicio</a></li>
         			<li><a href="/contacto">Contactar</a></li>
         			<li><a href="/mascota/list">Lista de Mascotas</a>
-        			<li><a href="/mascota/detalles">detalles de Mascotas</a>
-        			<li><a href="/fotos">fotos de Mascotas</a>
+        			<li><a href="/mascota/store/">Crear mascota</a>
+        			
         			
         		</ul>
         		<?php if(Login::isAdmin()){?>
@@ -41,7 +41,7 @@
                 "Hola <a href='/usuario/show/$identificado->id'>$identificado->usuario</a>, 
                       <a href='/login/logout'>salir</a>" :
                 "<a href='/login'>Identificarse</a> - <a href='/usuario/create'>Registro</a>";
-            
+                
             echo "</div>";
         }
         

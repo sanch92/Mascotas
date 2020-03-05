@@ -27,7 +27,7 @@ class MascotaController{
             throw new Exception('No tienes los permisos necesarios');
             
             // recuperar el usuario
-            if(!$mascota = Mascotas::getById($id))
+            if(!$mascota = Mascotas::getMascota($id))
                 throw new Exception("No se pudo recuperar la mascota.");
                 
                 include 'views/mascota/detalles.php';
@@ -38,7 +38,7 @@ class MascotaController{
     
     // muestra el formulario de nuevo usuario
     public function create(){
-        include 'views/mascota/nuevo.php';
+        include 'views/mascota/form_new.php';
     }
     
     // guarda el nuevo usuario
@@ -55,7 +55,7 @@ class MascotaController{
             $mascota->biografia = DB::escape($_POST['biografia']);
             $mascota->fechanacimiento = DB::escape($_POST['fechanacimiento']);
             $mascota->fechafallecimiento = DB::escape($_POST['fechafallecimiento']);
-          
+                             
             
             if(!$mascota->guardar())
                 throw new Exception("No se pudo guardar $mascota->mascota");
@@ -76,7 +76,7 @@ class MascotaController{
             throw new Exception('No tienes los permisos necesarios');
             
             // recuperar el usuario
-            if(!$mascota = Mascotas::getById($id))
+            if(!$mascota = Mascotas::getMascota($id))
                 throw new Exception("No se indicó la mascota.");
                 
                 // mostrar el formulario de edición
@@ -99,7 +99,7 @@ class MascotaController{
                 $id = intval($_POST['id']); // recuperar el id vía POST
                 
                 // recuperar el usuario
-                if(!$mascota = Mascotas::getById($id))
+                if(!$mascota = Mascotas::GetMascota($id))
                     throw new Exception("No existe la mascota $id.");
                     
                     $mascota->nombre = DB::escape($_POST['nombre']);
@@ -135,7 +135,7 @@ class MascotaController{
             throw new Exception('No tienes los permisos necesarios');
             
             // recupera el usuario para mostrar sus datos en la vista
-            if(!$mascota = Mascotas::getById($id))
+            if(!$mascota = Mascotas::getMascota($id))
                 throw new Exception("No existe la mascota $id.");
                 
                 // carga la vista de confirmación de borrado

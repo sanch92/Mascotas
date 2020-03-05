@@ -12,10 +12,10 @@
 		  (TEMPLATE)::login();
 		?>  
 		<h2>Confirmar baja de mascota</h2>
-		<p><?="$mascota->mascota ($mascota->fechafallecimiento)"?></p>
+		<p><?="$mascota->nombre ($mascota->fechafallecimiento)"?></p>
 		
 		<form method="post" action="/mascota/destroy">
-			<p>Confirmar el borrado del mascota <?=$mascota->mascota?>.</p>
+			<p>Confirmar el borrado del mascota <?=$mascota->nombre?>.</p>
 			<input type="hidden" name="id" value="<?=$id?>">
 			<input type="submit" name="borrar" value="Borrar">
 		</form>
