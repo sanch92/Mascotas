@@ -23,7 +23,7 @@ class MascotaController{
         
         // esta operación solamente la puede hacer el administrador
         // o bien el usuario propietario de los datos que se muestran
-        if(! (Login::isAdmin() || Login::get()->id == $id))
+        if(! (Login::isAdmin() || !Login::get()->id == $id))
             throw new Exception('No tienes los permisos necesarios');
             
             // recuperar el usuario
@@ -56,7 +56,7 @@ class MascotaController{
             $mascota->fechanacimiento = DB::escape($_POST['fechanacimiento']);
             $mascota->fechafallecimiento = DB::escape($_POST['fechafallecimiento']);
             $mascota->idusuario = Login::get()->id;
-            $mascota->idraza;
+        
                              
             
             if(!$mascota->guardar())
@@ -75,7 +75,9 @@ class MascotaController{
         // esta operación solamente la puede hacer el administrador
         // o bien el usuario propietario de los datos que se muestran
         if(! (Login::isAdmin() || Login::get()->id == $id))
+            // if(!(Login::getById() || Login::get()))
             throw new Exception('No tienes los permisos necesarios');
+                        
             
             // recuperar el usuario
             if(!$mascota = Mascotas::getMascota($id))
@@ -91,7 +93,7 @@ class MascotaController{
         
         // esta operación solamente la puede hacer el administrador
         // o bien el usuario propietario de los datos que se muestran
-        if(! (Login::isAdmin() || Login::get()->id == $id))
+        if(!Login::isAdmin() || !Login::get() || Login::get()->id != $id)
             throw new Exception('No tienes los permisos necesarios');
             
             // comprueba que llegue el formulario con los datos
@@ -116,10 +118,10 @@ class MascotaController{
                         
                         // intenta realizar la actualización de datos
                         if($mascota->actualizar()===false)
-                            throw new Exception("No se pudo actualizar $mascota->mascota");
+                            throw new Exception("No se pudo actualizar $mascota->nombre");
                             
                             // prepara un mensaje
-                            $GLOBALS['mensaje'] = "Actualización de la mascota $mascota->mascota correcta.";
+                            $GLOBALS['mensaje'] = "Actualización de la mascota $mascota->nombre correcta.";
                             
                             // repite la operación edit, así mantiene la vista de edición.
                             $this->edit($mascota->id);
@@ -133,7 +135,7 @@ class MascotaController{
         
         // esta operación solamente la puede hacer el administrador
         // o bien el usuario propietario de los datos que se muestran
-        if(! (Login::isAdmin() || Login::get()->id == $id))
+        if(!Login::isAdmin() || !Login::get() || Login::get()->id != $id)
             throw new Exception('No tienes los permisos necesarios');
             
             // recupera el usuario para mostrar sus datos en la vista

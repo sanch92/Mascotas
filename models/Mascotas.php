@@ -44,9 +44,9 @@ class Mascotas{
                                 sexo='$this->sexo',
                                 biografia='$this->biografia',
                                 fechanacimiento='$this->fechanacimiento',
-                                fechafallecimiento='$this->fechafallecimiento'
-                                idusuario=$this->idusuario',
-                                idraza=$this->idraza'
+                                fechafallecimiento='$this->fechafallecimiento',
+                                idusuario=$this->idusuario,
+                                idraza=$this->idraza
                             WHERE id=$this->id";
         
         return DB::update($consulta);

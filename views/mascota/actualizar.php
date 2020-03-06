@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Actualizar datos de la mascota <?=$mascota->mascota?></title>
+		<title>Actualizar datos de la mascota <?=$mascota->nombre?></title>
 		<style>
 		  form label{
 		      display: inline-block;
@@ -30,19 +30,19 @@
 			
 			<!-- resto del formulario... -->
 			<label>Nombre</label>
-			<input type="text" name="nombre">
+			<input type="text" name="nombre" value="<?=$mascota->nombre?>">
 			<br>
 			<label>Sexo</label>
-			<input type="text" name="sexo">
+			<input type="text" name="sexo" value="<?=$mascota->sexo?>">
 			<br>
 			<label>biografia</label>
-			<input type="text" name="biografia">
+			<input type="text" name="biografia" value="<?=$mascota->biografia?>">
 			<br>
 			<label>nacimiento</label>
-			<input type="text" name="fechanacimiento">
+			<input type="date" name="fechanacimiento" value="<?=$mascota->fechanacimiento?>">
 			<br>
 			<label>fallecimiento</label>
-			<input type="text" name="fechafallecimiento">
+			<input type="date" name="fechafallecimiento" value="<?=$mascota->fechafallecimiento?>">
 						
 			<h4>Operaciones solo para el admin</h4>
 			<label>Privilegio</label>

@@ -37,15 +37,21 @@
 			<label>Biografia</label>
 			<input type="text" name="biografia" required><br>
 			<label>Nacimiento</label>
-			<input type="text" name="fechanacimiento"><br>
+			<input type="date" name="fechanacimiento"><br>
 			<label>Fallecimiento</label>
-			<input type="text" name="fechafallecimiento"><br>
-			<input type="file" name="imagen"><br><br>
+			<input type="date" name="fechafallecimiento"><br>
 			<br><br>
 			<input type="submit" name="guardar" value="Enviar">
 		</form>
+		
+		<?php 
+		foreach ($razas as $raza)
+		    echo "<option value='$raza->id'>$raza->tipo $raza->raza</option>";
+		?>
+		
 		<br>	
-			<select name="Tipos">						
+			<select name="Tipos">
+			<option value="idtipo">Tipos</option>						
  		 	<option value="idtipo">Gato</option>
   			<option value="idtipo">Perro</option>
   			<option value="idtipo">Araña</option>
