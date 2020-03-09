@@ -20,11 +20,6 @@ class MascotaController{
     
     // muestra un mascota
     public function show(int $id = 0){
-        
-        // esta operación solamente la puede hacer el administrador
-        // o bien el usuario propietario de los datos que se muestran
-        if(! (Login::isAdmin() || !Login::get()->id == $id))
-            throw new Exception('No tienes los permisos necesarios');
             
             // recuperar el usuario
             if(!$mascota = Mascotas::getMascota($id))
@@ -38,6 +33,8 @@ class MascotaController{
     
     // muestra el formulario de nuevo usuario
     public function create(){
+        
+        $razas = Raza::get();
         include 'views/mascota/form_new.php';
     }
     
@@ -56,14 +53,15 @@ class MascotaController{
             $mascota->fechanacimiento = DB::escape($_POST['fechanacimiento']);
             $mascota->fechafallecimiento = DB::escape($_POST['fechafallecimiento']);
             $mascota->idusuario = Login::get()->id;
+            $mascota->idraza = intval($_POST['raza']);
         
                              
             
             if(!$mascota->guardar())
                 throw new Exception("No se pudo guardar $mascota->nombre");
                 
-                $mensaje="Guardado la mascota $mascota->nombre";
-                include 'views/exito.php'; //mostrar éxito
+            $mensaje="Guardado la mascota $mascota->nombre";
+            include 'views/exito.php'; //mostrar éxito
     }
     
     

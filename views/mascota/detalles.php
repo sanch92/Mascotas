@@ -26,7 +26,18 @@
 		<a href="/mascota/edit/<?=$mascota->id?>">Editar mascota</a> - 
 		<a href="/mascota/delete/<?=$mascota->id?>">Borrar mascota</a> - 
 		<a href="/mascota/list">Lista de mascota</a> 
+
 	
+    	<form action="foto/store">
+    		<div>
+    		<label>sube la foto de tu mascotaa!</label><br>
+    		<input type="hidden" id="idmascota" >
+    		<input type="file" id="fichero"  name="file" accept=".jpg, .jpeg, .png">
+    		
+    		<input type="submit" name="Guardar"> 
+    		</div>
+    	</form>
+		
 		<?php 
 		  (TEMPLATE)::footer();
 		?>

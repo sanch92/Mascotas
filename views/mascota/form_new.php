@@ -41,21 +41,17 @@
 			<label>Fallecimiento</label>
 			<input type="date" name="fechafallecimiento"><br>
 			<br><br>
-			<input type="submit" name="guardar" value="Enviar">
+				
+    		<select name="raza">
+    			<?php 
+        		foreach ($razas as $raza)
+        		    echo "<option value='$raza->id'>$raza->tipo $raza->raza</option>";
+        		?>
+    		</select>	
+    		<br>
+    		<input type="submit" name="guardar" value="Enviar">
+    		
 		</form>
-		
-		<?php 
-		foreach ($razas as $raza)
-		    echo "<option value='$raza->id'>$raza->tipo $raza->raza</option>";
-		?>
-		
-		<br>	
-			<select name="Tipos">
-			<option value="idtipo">Tipos</option>						
- 		 	<option value="idtipo">Gato</option>
-  			<option value="idtipo">Perro</option>
-  			<option value="idtipo">Araña</option>
-		</select>	
 	
 		<?php 
 		  (TEMPLATE)::footer();
