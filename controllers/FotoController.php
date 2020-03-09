@@ -33,15 +33,15 @@ class FotoController{
         if(empty($_POST['guardar']))
             throw new Exception('No se recibieron datos');
             
-            $mascota = new Fotos(); //crear el nuevo usuario
+            $foto = new Fotos(); //crear el nuevo usuario
             
-            $mascota->fichero = DB::escape($_POST['fichero']);
-            $mascota->ubicacion = DB::escape($_POST['ubicacion']);
+            $foto->fichero = DB::escape($_POST['fichero']);
+            $foto->ubicacion = DB::escape($_POST['ubicacion']);
             
             
             
-            if(!$mascota->guardar()){
-                throw new Exception("No se pudo guardar la $foto->foto");
+            if(!$foto->guardar()){
+                throw new Exception("No se pudo guardar la $foto->fichero");
                 
                 $mensaje="Guardado la $foto->foto correcta.";
                 include 'views/exito.php'; //mostrar éxito
