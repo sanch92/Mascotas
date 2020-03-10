@@ -28,7 +28,7 @@
 		<a href="/mascota/list">Lista de mascota</a> 
 
 	
-    	<form action="foto/store">
+    	<form action="/foto/store">
     		<div>
     		<label>sube la foto de tu mascotaa!</label><br>
     		<input type="hidden" id="idmascota" >
