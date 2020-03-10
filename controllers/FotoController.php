@@ -3,64 +3,82 @@
 // CONTROLADOR Foto
 class FotoController{
     
-    // operación por defecto
-    public function index(){
-        $this->list(); // listado de fotos
-    }
-    
-    // lista de las fotos
-    public function list(){
+    // muestra el formulario de nueva foto
+    public function create(int $id=0){
         
-        // solamente el administrador
-        if(!Login::isAdmin())
-            throw new Exception('No tienes permiso para hacer esto');
+        //recupera el libro para mostrar informacion en la vista
+        $fotos = Fotos:: getFoto($id);
+        
+        //si no hay foto..
+        if(!$foto)
+            throw new Exception("No se encontro la foto");
             
-            $fotos = Fotos::getFoto($id);
-            include 'views/foto/lista.php';
+            //carga la vista de crear fotos
+            include 'view/foto/nuevo.php';
     }
     
-     
-    
-    // muestra el formulario de nuevo usuario
-    public function create(){
-        include '/views/foto/nuevo.php';
-    }
-    
-    // guarda el nuevo usuario
+    // guardar la nueva foto
     public function store(){
         
-        // comprueba que llegue el formulario con los datos
+        //comprueba que llegue el formulario con los datos
         if(empty($_POST['guardar']))
-            throw new Exception('No se recibieron datos');
+            throw new Exeption('No se recibieron datos');
             
-            $foto = new Fotos(); //crear el nuevo usuario
+            $e = new Foto();
             
-            $foto->fichero = DB::escape($_POST['fichero']);
-            $foto->ubicacion = DB::escape($_POST['ubicacion']);
+            //recupera los datos que llegan por post
+            $e->id = intval($_POST['id']);
+            $e->fichero = ($_POST['fichero']);
+            $e->ubicacion = ($_POST['ubicacion']);
+            $e->idmascota = intval($_POST['idmascota']);
             
-            
-            
-            if(!$foto->guardar()){
-                throw new Exception("No se pudo guardar la $foto->fichero");
+            if(!$e->guardar()) //guarda la foto en la bdd
+                throw new Exception("No se pudo guardar");
                 
-                $mensaje="Guardado la $foto->foto correcta.";
-                include '/views/exito.php'; //mostrar éxito
+                // redireccionar el FotoController::show($id);
+                // para ver de nuevo los detalles del libro
+                (new FotoController())->show($e->id);
+                
     }
     
-        //TRATAMIENTO DEL FICHERO DE IMAGEN
-        if(Upload::llegaFichero('fichero'))
-            $foto->fichero = Upload::procesar(
-                $_FILES['fichero'], '/fichero/fotos', true, 0, 'image/*');
-            if(!$foto->guardar()){ //guarda las fotos en la bdd
-                //SI NO SE PUDO GUARDAR
-                @unlink($foto->fichero); //borra la imagen recien subida
-                throw new Exception("No se pudo guardar $foto->fichero");
-                
-            }
+    //muestra el formulario de confirmacion de eliminacion
+    public function delete(int $id = 0){
+        
+        //recupero el ejemplar para poder mostrar info
+        if(!$foto = Foto::get($id))
+            throw new Exception("No se encontro el ejemplar $id.");
             
-            $mensaje="Guardado la foto $foto->fichero correcto.;";
-                include '/views/exito.php'; //muestra la vista con exito.
-
-}
-
+            //recupero la foto para mostrar la info
+            $foto = $foto->getFoto();
+            
+            include 'view/foto/borrar.php';
+            
+    }
+    
+    // elimina la fotografia
+    public function destroy(){
+        
+        //cormprueba que llegue el formulario de confirmacion
+        if(empty($_POST['borrar']))
+            throw new Exception('No se recibio confirmacion');
+            
+            $id = intval($_POST['id']);
+            
+            //recupero el ejemplar para poder mostrar info
+            if(!$foto = Foto::get($id))
+                throw new Exception("No se encontro la foto $id.");
+                
+                //recupero la foto para poder mostrar la info
+                $foto = $foto->getFoto();
+                
+                //intenta borrar la fotografia de la bdd
+                if(Foto::borrar($id)===false)
+                    throw new Exception('No se pudo borrar');
+                    
+                    $mensaje="Guardado la $foto->foto correcta.";
+                    include 'views/exito.php'; //mostrar éxito
+    }
+    
+    
+    
 }

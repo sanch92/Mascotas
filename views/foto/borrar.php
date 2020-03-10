@@ -11,17 +11,19 @@
 		  (TEMPLATE)::nav();
 		  (TEMPLATE)::login();
 		?>  
-		<h2>Confirmar baja de mascota</h2>
-		<p><?="$foto->fichero ($foto->ubicacion)"?></p>
+		<p>Estas a punto de borrar la foto <?$foto->id?>
+		del libro <?$mascota->nombre;?>.</p>
+		
 		
 		<form method="post" action="/foto/destroy">
-			<p>Confirmar el borrado del mascota <?=$foto->foto?>.</p>
-			<input type="hidden" name="id" value="<?=$id?>">
+			<label>Por favor confirma el borrado:</label>
+			<input type="hidden" name="id" value="<?=$foto->id?>">
+			
 			<input type="submit" name="borrar" value="Borrar">
 		</form>
 		<br>
-		<a href="/foto/show/<?=$foto->id?>">Detalles</a> -
-		<a href="/foto/list">Volver al listado de fotografias</a>
+		<a href="/foto/show/<?=$foto->id?>">Volver a detalles de las mascotas</a>
+		
 		
 		<?php 
 		  (TEMPLATE)::footer();
